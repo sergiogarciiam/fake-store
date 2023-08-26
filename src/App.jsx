@@ -3,16 +3,15 @@ import { Link, Outlet } from "react-router-dom";
 function App() {
   return (
     <>
-      <h1>Header</h1>
       <ul>
         <li>
-          <Link to={"/"}>Header</Link>
+          <Link to={"/"}>Fake Store</Link>
         </li>
         <li>
           <Link to={"products"}>Products</Link>
         </li>
         <li>
-          <Link to={"Cart"}>Cart</Link>
+          <Link to={"cart"}>Cart</Link>
         </li>
       </ul>
 
