@@ -1,17 +1,30 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { useActiveLink } from "./utils/useActiveLink";
 
 function App() {
+  const location = useLocation();
+  const activeLink = useActiveLink(location);
+
   return (
     <header className="header">
       <ul>
         <li>
-          <Link to={"/"}>Fake Store</Link>
+          <Link to={"/"} className={activeLink === "/" ? "active" : ""}>
+            Fake Store
+          </Link>
         </li>
         <li>
-          <Link to={"products"}>Products</Link>
+          <Link
+            to={"products"}
+            className={activeLink.includes("/products") ? "active" : ""}
+          >
+            Products
+          </Link>
         </li>
         <li>
-          <Link to={"cart"}>Cart</Link>
+          <Link to={"cart"} className={activeLink === "/cart" ? "active" : ""}>
+            Cart
+          </Link>
         </li>
       </ul>
 

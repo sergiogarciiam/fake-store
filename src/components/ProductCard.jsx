@@ -7,7 +7,7 @@ function ProductCard({ product }) {
       <img src={product.image}></img>
       <h3>{product.title}</h3>
       <p>
-        {product.rating.rate}({product.rating.count})
+        {product.rating.rate} ({product.rating.count})
       </p>
       <p>{product.price}</p>
     </Link>

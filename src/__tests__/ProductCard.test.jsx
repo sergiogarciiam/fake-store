@@ -1,5 +1,5 @@
-import { cleanup, render, screen } from "@testing-library/react";
-import { describe, it, expect, afterEach } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 
 import ProductCard from "../components/ProductCard";
@@ -32,7 +32,7 @@ describe("Product card component", () => {
     expect(cardElements[0].src).toMatch(product.image);
     expect(cardElements[1].textContent).toMatch(product.title);
     expect(cardElements[2].textContent).toMatch(
-      product.rating.rate + "(" + product.rating.count + ")"
+      product.rating.rate + " (" + product.rating.count + ")"
     );
     expect(cardElements[3].textContent).toMatch(product.price.toString());
   });

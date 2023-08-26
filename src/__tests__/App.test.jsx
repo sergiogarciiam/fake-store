@@ -22,12 +22,15 @@ describe("App component", () => {
 
     expect(links[0].textContent).toMatch(/Fake Store/i);
     expect(links[0].href).toMatch("/");
+    expect(links[0].className).toMatch("active");
 
     expect(links[1].textContent).toMatch(/Products/i);
     expect(links[1].href).toMatch("/products");
+    expect(links[1].className).toMatch("");
 
     expect(links[2].textContent).toMatch(/Cart/i);
     expect(links[2].href).toMatch("/cart");
+    expect(links[2].className).toMatch("");
   });
 
   it("render correct header with links by clicking the products link", async () => {
@@ -46,11 +49,14 @@ describe("App component", () => {
 
     expect(links[0].textContent).toMatch(/Fake Store/i);
     expect(links[0].href).toMatch("/");
+    expect(links[0].className).toMatch("");
 
     expect(links[1].textContent).toMatch(/Products/i);
     expect(links[1].href).toMatch("/products");
+    expect(links[1].className).toMatch("active");
 
     expect(links[2].textContent).toMatch(/Cart/i);
     expect(links[2].href).toMatch("/cart");
+    expect(links[2].className).toMatch("");
   });
 });

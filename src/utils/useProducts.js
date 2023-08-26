@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export function useProduct(url) {
-  const [data, setData] = useState([]);
+export function useProducts(url) {
+  const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +10,7 @@ export function useProduct(url) {
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
-        setData(json);
+        setProducts(json);
         setLoading(false);
       })
       .catch(() => {
@@ -19,5 +19,5 @@ export function useProduct(url) {
       });
   }, [url]);
 
-  return { data, error, loading };
+  return { products, error, loading };
 }

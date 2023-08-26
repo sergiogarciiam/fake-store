@@ -1,8 +1,8 @@
-import { useProduct } from "../utils/useProducts";
+import { useProducts } from "../utils/useProducts";
 import ProductCard from "./ProductCard";
 
 function Home() {
-  const { data, error, loading } = useProduct(
+  const { products, error, loading } = useProducts(
     "https://fakestoreapi.com/products/1"
   );
 
@@ -13,9 +13,9 @@ function Home() {
     <div className="home">
       <h1>Our Top Products</h1>
       <section aria-label="Top Products Section">
-        <ProductCard product={data}></ProductCard>
-        <ProductCard product={data}></ProductCard>
-        <ProductCard product={data}></ProductCard>
+        <ProductCard product={products}></ProductCard>
+        <ProductCard product={products}></ProductCard>
+        <ProductCard product={products}></ProductCard>
       </section>
       <p>
         By{" "}
