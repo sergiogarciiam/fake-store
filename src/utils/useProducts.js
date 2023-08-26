@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react";
 
-const LINK = "https://fakestoreapi.com";
-
-export function useIndividualProduct() {
-  const [product, setProduct] = useState(null);
+export function useProduct(url) {
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${LINK}/products/1`)
-      .then((response) => {
-        if (response === "400") throw new Error("server error");
-        return response.json();
+    setLoading(true);
+    fetch(url)
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
       })
-      .then((data) => setProduct(data))
-      .catch((error) => setError(error));
-  }, []);
+      .catch(() => {
+        setError("server error");
+        setLoading(false);
+      });
+  }, [url]);
 
-  return [product, error];
+  return { data, error, loading };
 }

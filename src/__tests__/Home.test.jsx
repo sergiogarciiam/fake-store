@@ -1,30 +1,23 @@
-import { render } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-
+import { describe, expect, it } from "vitest";
 import Home from "../components/Home";
 
 describe("Home component", () => {
-  it("render correct home", () => {
+  it("render correct home", async () => {
     render(
       <BrowserRouter>
         <Home></Home>
       </BrowserRouter>
     );
 
-    expect(screen.getByRole("heading").textContent).toMatch(
-      /Our Top Products/i
-    );
+    const heading = await screen.findByRole("heading", { level: 1 });
+    const productsLinks = screen.getByRole("region").children;
+    const authorLink = screen.getByRole("link", { name: /Sergio García/i });
 
-    const productCards = screen.getByRole("link");
-    expect(productCards.length).toBe(3);
-
-    expect(productCards[0].children.length).toBe(3);
-    expect(productCards[1].children.length).toBe(3);
-    expect(productCards[2].children.length).toBe(3);
-
-    expect(screen.getByRole("footer").children[0].textContent).toMatch(
-      "By Sergio García"
-    );
+    expect(heading.textContent).toMatch("Our Top Products");
+    expect(productsLinks.length).toBe(3);
+    expect(authorLink.href).toMatch("https://github.com/sergiogarciiam");
+    expect(authorLink.target).toMatch("_blank");
   });
 });

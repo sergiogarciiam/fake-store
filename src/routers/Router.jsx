@@ -19,15 +19,9 @@ function Router() {
         {
           path: "/products",
           element: <Products></Products>,
-          children: [
-            {
-              path: "/products/:id",
-              element: <ProductDetails></ProductDetails>,
-            },
-          ],
         },
         {
-          path: "/productDetails",
+          path: "/products/:id",
           element: <ProductDetails></ProductDetails>,
         },
         {

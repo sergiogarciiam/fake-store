@@ -7,6 +7,7 @@ import ProductCard from "../components/ProductCard";
 describe("Product card component", () => {
   it("render correct", () => {
     const product = {
+      id: 1,
       title: "name",
       image: "image",
       rating: {
@@ -16,9 +17,16 @@ describe("Product card component", () => {
       price: 20,
     };
 
-    render(<ProductCard product={product}></ProductCard>);
+    render(
+      <BrowserRouter>
+        <ProductCard product={product}></ProductCard>
+      </BrowserRouter>
+    );
 
-    const cardElements = screen.getByRole("region").children;
+    const card = screen.getByRole("link");
+    expect(card.href).toMatch(`products/${product.id}`);
+
+    const cardElements = card.children;
     expect(cardElements.length).toBe(4);
 
     expect(cardElements[0].src).toMatch(product.image);

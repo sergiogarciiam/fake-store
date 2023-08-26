@@ -1,15 +1,16 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
   return (
-    <section aria-label="product-card" className="product-card">
+    <Link to={"/products/" + product.id} className="product-card">
       <img src={product.image}></img>
       <h3>{product.title}</h3>
       <p>
         {product.rating.rate}({product.rating.count})
       </p>
       <p>{product.price}</p>
-    </section>
+    </Link>
   );
 }
 
