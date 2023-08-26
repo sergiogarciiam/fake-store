@@ -12,7 +12,7 @@ describe("Home component", () => {
     );
 
     const heading = await screen.findByRole("heading", { level: 1 });
-    const productsLinks = screen.getByRole("region").children;
+    const productsLinks = await screen.getByRole("region").children;
     const authorLink = screen.getByRole("link", { name: /Sergio García/i });
 
     expect(heading.textContent).toMatch("Our Top Products");
