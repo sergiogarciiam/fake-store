@@ -2,7 +2,7 @@ import { Link, Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <header className="header">
       <ul>
         <li>
           <Link to={"/"}>Fake Store</Link>
@@ -16,7 +16,7 @@ function App() {
       </ul>
 
       <Outlet></Outlet>
-    </>
+    </header>
   );
 }
 

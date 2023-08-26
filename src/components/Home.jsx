@@ -6,10 +6,9 @@ function Home() {
   const [product3, error3] = useIndividualProduct();
 
   return (
-    <>
+    <div className="home">
       <h1>Our Top Products</h1>
-      <p>{product1.title}</p>
-    </>
+    </div>
   );
 }
 
