@@ -21,6 +21,10 @@ function Router() {
           element: <Products></Products>,
         },
         {
+          path: "/products/:category",
+          element: <Products></Products>,
+        },
+        {
           path: "/products/:id",
           element: <ProductDetails></ProductDetails>,
         },
