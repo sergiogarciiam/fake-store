@@ -1,8 +1,8 @@
-import { useProducts } from "../utils/useProducts";
+import { useStore } from "../utils/useStore";
 import ProductCard from "./ProductCard";
 
 function Products() {
-  const { products, error, loading } = useProducts(
+  const { data, error, loading } = useStore(
     "https://fakestoreapi.com/products/"
   );
 
@@ -12,8 +12,8 @@ function Products() {
   return (
     <div className="products-container">
       <h1>Products</h1>
-      {Object.keys(products).map((key) => {
-        return <ProductCard key={key} product={products[key]}></ProductCard>;
+      {Object.keys(data).map((key) => {
+        return <ProductCard key={key} product={data[key]}></ProductCard>;
       })}
     </div>
   );

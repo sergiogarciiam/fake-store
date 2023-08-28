@@ -12,12 +12,12 @@ describe("Home component", () => {
     );
 
     const heading = await screen.findByRole("heading", { level: 1 });
-    const productsLinks = await screen.getByRole("region").children;
-    const authorLink = screen.getByRole("link", { name: /Sergio García/i });
+    const links = await screen.findAllByRole("link");
 
-    expect(heading.textContent).toMatch("Our Top Products");
-    expect(productsLinks.length).toBe(3);
-    expect(authorLink.href).toMatch("https://github.com/sergiogarciiam");
-    expect(authorLink.target).toMatch("_blank");
+    expect(heading.textContent).toMatch("What are you looking for?");
+    expect(links.length).toBe(6);
+    expect(links[4].textContent).toMatch("Explore All");
+    expect(links[5].href).toMatch("https://github.com/sergiogarciiam");
+    expect(links[5].target).toMatch("_blank");
   });
 });

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export function useProducts(url) {
-  const [products, setProducts] = useState([]);
+export function useStore(url) {
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -10,14 +10,14 @@ export function useProducts(url) {
     fetch(url)
       .then((response) => response.json())
       .then((json) => {
-        setProducts(json);
+        setData(json);
         setLoading(false);
       })
-      .catch(() => {
-        setError("server error");
+      .catch((error) => {
+        setError("server error, " + error);
         setLoading(false);
       });
   }, [url]);
 
-  return { products, error, loading };
+  return { data, error, loading };
 }

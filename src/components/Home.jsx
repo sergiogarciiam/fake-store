@@ -1,9 +1,9 @@
-import { useProducts } from "../utils/useProducts";
-import ProductCard from "./ProductCard";
+import { Link } from "react-router-dom";
+import { useStore } from "../utils/useStore";
 
 function Home() {
-  const { products, error, loading } = useProducts(
-    "https://fakestoreapi.com/products/1"
+  const { data, error, loading } = useStore(
+    "https://fakestoreapi.com/products/categories/"
   );
 
   if (error) return <p>{error}</p>;
@@ -11,12 +11,19 @@ function Home() {
 
   return (
     <div className="home">
-      <h1>Our Top Products</h1>
-      <section aria-label="Top Products Section">
-        <ProductCard product={products}></ProductCard>
-        <ProductCard product={products}></ProductCard>
-        <ProductCard product={products}></ProductCard>
-      </section>
+      <h1>What are you looking for?</h1>
+      <ul>
+        {data.map((category) => {
+          return (
+            <li key={category}>
+              <Link to="/products">{category}</Link>
+            </li>
+          );
+        })}
+        <li>
+          <Link to="/products">Explore All</Link>
+        </li>
+      </ul>
       <p>
         By{" "}
         <a href="https://github.com/sergiogarciiam" target="__blank">
