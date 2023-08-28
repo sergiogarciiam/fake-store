@@ -21,7 +21,7 @@ function Router() {
           element: <Products></Products>,
         },
         {
-          path: "/products/:category",
+          path: "/products/category/:category",
           element: <Products></Products>,
         },
         {

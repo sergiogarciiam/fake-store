@@ -50,6 +50,6 @@ describe("Categories List component", () => {
 
     const links = await screen.findAllByRole("link");
     expect(links.length).toBe(5);
-    expect(links[0].textContent).toMatch("All");
+    expect(links[0].textContent).toMatch("all");
   });
 });

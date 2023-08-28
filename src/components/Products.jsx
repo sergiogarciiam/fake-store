@@ -16,7 +16,7 @@ function Products() {
 
   return (
     <div className="products-container">
-      <h1>Products</h1>
+      <h1>Products {category}</h1>
       <CategoriesList></CategoriesList>
       {Object.keys(data).map((key) => {
         return <ProductCard key={key} product={data[key]}></ProductCard>;

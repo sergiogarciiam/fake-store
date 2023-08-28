@@ -7,6 +7,7 @@ function ProductDetails() {
   const { data, error, loading } = useStore(
     `https://fakestoreapi.com/products/${id}`
   );
+  console.log(data);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -31,7 +32,7 @@ function ProductDetails() {
       <p>${data.price}</p>
 
       <form>
-        <label>Quantity:</label>
+        <label>Quantity: </label>
         <select value={quantity} onChange={handleChangeQuantity}>
           {Array.from({ length: 15 }, (_, index) => (
             <option key={index + 1} value={index + 1}>
