@@ -7,7 +7,6 @@ function ProductDetails() {
   const { data, error, loading } = useStore(
     `https://fakestoreapi.com/products/${id}`
   );
-  console.log(data);
 
   const [quantity, setQuantity] = useState(1);
 

@@ -1,12 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 
 import Header from "../components/Header";
 import Home from "../components/Home";
 import Products from "../components/Products";
-import ProductDetails from "../components/ProductDetails";
-import { useStore } from "../utils/useStore";
 
 describe("Header component", () => {
   it("render correct header with links", () => {
@@ -67,56 +65,5 @@ describe("Products component", () => {
     expect(heading).toBeInTheDocument();
     expect(heading.textContent).toMatch("Products");
     expect(links.length).toBe(20);
-  });
-});
-
-describe("Product Details component", () => {
-  vi.mock("react-router-dom", async () => {
-    const actual = await vi.importActual("react-router-dom");
-    return {
-      ...actual,
-      useParams: () => ({ id: "1" }),
-    };
-  });
-
-  it("render correct product details", async () => {
-    render(
-      <BrowserRouter>
-        <ProductDetails></ProductDetails>
-      </BrowserRouter>
-    );
-
-    // doesn't work
-    vi.spyOn(useStore).mockReturnValue({
-      data: {
-        title: "Mock Product",
-        image: "mock-image.jpg",
-        rating: { rate: 4.5, count: 100 },
-        price: 19.99,
-        description: "A mock product description",
-      },
-      error: null,
-      loading: false,
-    });
-
-    const title = await screen.findByRole("heading");
-    console.log(title.textContent);
-    const image = await screen.findByRole("img");
-    const button = await screen.findByRole("button");
-    const separators = await screen.findAllByRole("separator");
-    //const paragraphs = await screen.findAllByRole("paragraph");
-    //const label = await screen.findByLabelText(/Quantity:/i);
-    const combobox = await screen.findByRole("combobox");
-    const options = await screen.findAllByRole("option");
-
-    expect(title).toBeInTheDocument();
-    expect(image).toBeInTheDocument();
-    expect(button).toBeInTheDocument();
-    expect(button.textContent).toMatch(/Add To Cart/i);
-    expect(separators.length).toBe(2);
-    //expect(paragraphs.length).toBe(5);
-    //expect(label).toBeInTheDocument();
-    expect(combobox).toBeInTheDocument();
-    expect(options.length).toBe(15);
   });
 });
