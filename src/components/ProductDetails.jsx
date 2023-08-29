@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useStore } from "../utils/useStore";
 import { useState } from "react";
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -9,10 +10,7 @@ function ProductDetails() {
   );
 
   const [quantity, setQuantity] = useState(1);
-
-  const handleChangeQuantity = (e) => {
-    setQuantity(e.target.value);
-  };
+  const { addProducts } = useLocalStorage();
 
   if (error) return <p>{error}</p>;
   if (loading) return null;
@@ -32,7 +30,7 @@ function ProductDetails() {
 
       <form>
         <label>Quantity: </label>
-        <select value={quantity} onChange={handleChangeQuantity}>
+        <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
           {Array.from({ length: 15 }, (_, index) => (
             <option key={index + 1} value={index + 1}>
               {index + 1}
@@ -41,7 +39,9 @@ function ProductDetails() {
         </select>
       </form>
 
-      <button>Add to Cart</button>
+      <button onClick={() => addProducts(id, parseInt(quantity))}>
+        Add to Cart
+      </button>
 
       <hr></hr>
       <section>

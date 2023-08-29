@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { useActiveLink } from "../utils/useActiveLink";
+import { useLocalStorage } from "../utils/useLocalStorage";
 
 function Header() {
   const location = useLocation();
   const activeLink = useActiveLink(location);
+  const { products } = useLocalStorage();
 
   return (
     <ul className="header">
@@ -24,6 +26,7 @@ function Header() {
         <Link to={"cart"} className={activeLink === "/cart" ? "active" : ""}>
           Cart
         </Link>
+        <p>{products.number}</p>
       </li>
     </ul>
   );
