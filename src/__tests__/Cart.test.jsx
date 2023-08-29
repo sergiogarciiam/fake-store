@@ -4,13 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 
 import Cart from "../components/Cart";
 
+const PRICE = 100;
+
 vi.mock("../utils/useLocalStorage", () => ({
   useLocalStorage: vi.fn(() => ({
-    products: {
+    cart: {
       data: {
         1: 2,
         2: 3,
       },
+      price: PRICE,
     },
   })),
 }));
@@ -24,7 +27,7 @@ describe("Categories List component", () => {
     );
 
     const links = await screen.findAllByRole("link");
-    const subTotal = screen.getByText("Subtotal ( items): ", {
+    const subTotal = screen.getByText(`Subtotal ( items): $${PRICE}`, {
       exact: false,
     });
 

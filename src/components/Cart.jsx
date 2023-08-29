@@ -2,19 +2,21 @@ import { useLocalStorage } from "../utils/useLocalStorage";
 import { ProductCardToListView } from "./ProductCard";
 
 function Cart() {
-  const { products } = useLocalStorage();
+  const { cart } = useLocalStorage();
 
   return (
     <div className="cart">
-      {Object.keys(products.data).map((key) => {
+      {Object.keys(cart.data).map((key) => {
         return (
           <ProductCardToListView
             key={key}
-            product={products.data[key]}
+            product={cart.data[key]}
           ></ProductCardToListView>
         );
       })}
-      <p>Subtotal ({products.number} items): $35.5</p>
+      <p>
+        Subtotal ({cart.number} items): ${cart.price}
+      </p>
     </div>
   );
 }

@@ -10,7 +10,7 @@ function ProductDetails() {
   );
 
   const [quantity, setQuantity] = useState(1);
-  const { addProducts } = useLocalStorage();
+  const { addCart } = useLocalStorage();
 
   if (error) return <p>{error}</p>;
   if (loading) return null;
@@ -39,7 +39,7 @@ function ProductDetails() {
         </select>
       </form>
 
-      <button onClick={() => addProducts(data, parseInt(quantity))}>
+      <button onClick={() => addCart(data, parseInt(quantity))}>
         Add to Cart
       </button>
 

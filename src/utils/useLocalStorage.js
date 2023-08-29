@@ -1,41 +1,46 @@
 import { useEffect, useState } from "react";
 
-function getInitialNumber(initialData) {
-  let number = 0;
+function getInitial(initialData) {
+  let initialNumber = 0;
+  let initialPrice = 0;
+
   Object.keys(initialData).map((key) => {
-    number += initialData[key].quantity;
+    initialNumber += initialData[key].quantity;
+    initialPrice += initialData[key].price * initialData[key].quantity;
   });
 
-  return number;
+  return { initialNumber, initialPrice };
 }
 
 export function useLocalStorage() {
   const initialData = JSON.parse(localStorage.getItem("products")) || {};
-  const initialNumber = getInitialNumber(initialData);
+  const { initialNumber, initialPrice } = getInitial(initialData);
 
-  const [products, setProducts] = useState({
+  const [cart, setCart] = useState({
     data: initialData,
     number: initialNumber,
+    price: initialPrice,
   });
 
-  const addProducts = (product, quantity) => {
-    setProducts({
+  const addCart = (product, quantity) => {
+    setCart({
       data: {
-        ...products.data,
-        [product.id]: products.data[product.id]
+        ...cart.data,
+        [product.id]: cart.data[product.id]
           ? {
-              ...products.data[product.id],
-              quantity: products.data[product.id].quantity + quantity,
+              ...cart.data[product.id],
+              quantity: cart.data[product.id].quantity + quantity,
             }
           : { ...product, quantity: quantity },
       },
-      number: products.number + quantity,
+      number: cart.number + quantity,
+      price: cart.price + product.price * quantity,
     });
   };
 
   useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(products.data));
-  }, [products]);
+    localStorage.setItem("cart", JSON.stringify(cart.data));
+  }, [cart]);
 
-  return { products, addProducts };
+  return { cart, addCart };
 }

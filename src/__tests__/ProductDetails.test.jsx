@@ -84,14 +84,14 @@ describe("Product Details component", () => {
     );
 
     const button = await screen.findByRole("button");
-    let products = {};
+    let cart = {};
 
     await user.click(button);
-    products = JSON.parse(localStorage.getItem("products"));
-    expect(products[ID].quantity).toBe(1);
+    cart = JSON.parse(localStorage.getItem("cart"));
+    expect(cart[ID].quantity).toBe(1);
 
     await user.click(button);
-    products = JSON.parse(localStorage.getItem("products"));
-    expect(products[ID].quantity).toBe(2);
+    cart = JSON.parse(localStorage.getItem("cart"));
+    expect(cart[ID].quantity).toBe(2);
   });
 });

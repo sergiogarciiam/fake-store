@@ -8,7 +8,7 @@ const NUMBER_PRODUCTS = 10;
 
 vi.mock("../utils/useLocalStorage", () => ({
   useLocalStorage: vi.fn(() => ({
-    products: {
+    cart: {
       number: NUMBER_PRODUCTS,
     },
   })),
