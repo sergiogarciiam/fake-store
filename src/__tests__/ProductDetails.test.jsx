@@ -1,8 +1,9 @@
-import { render, screen } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 
 import ProductDetails from "../components/ProductDetails";
+import * as userEvent from "@testing-library/user-event";
 
 const MOCK_DATA = {
   title: "Mock Product",
@@ -12,11 +13,13 @@ const MOCK_DATA = {
   description: "A mock product description",
 };
 
+const ID = 1;
+
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
   return {
     ...actual,
-    useParams: () => ({ id: "1" }),
+    useParams: () => ({ id: ID }),
   };
 });
 
@@ -29,6 +32,10 @@ vi.mock("../utils/useStore", () => ({
 }));
 
 describe("Product Details component", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("render correct product details", async () => {
     render(
       <BrowserRouter>
@@ -64,5 +71,26 @@ describe("Product Details component", () => {
 
     expect(screen.getByText("About the product")).toBeInTheDocument();
     expect(screen.getByText(MOCK_DATA.description)).toBeInTheDocument();
+  });
+
+  it("add to cart", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <BrowserRouter>
+        <ProductDetails></ProductDetails>
+      </BrowserRouter>
+    );
+
+    const button = await screen.findByRole("button");
+    let products = {};
+
+    await user.click(button);
+    products = JSON.parse(localStorage.getItem("products"));
+    expect(products[ID]).toBe(1);
+
+    await user.click(button);
+    products = JSON.parse(localStorage.getItem("products"));
+    expect(products[ID]).toBe(2);
   });
 });

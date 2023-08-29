@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function ProductCard({ product }) {
+export function ProductCardToGridView({ product }) {
   return (
     <Link to={"/products/" + product.id} className="product-card">
       <img src={product.image}></img>
@@ -9,13 +9,28 @@ function ProductCard({ product }) {
       <p>
         {product.rating.rate} ({product.rating.count})
       </p>
-      <p>{product.price}</p>
+      <p>${product.price}</p>
     </Link>
   );
 }
 
-ProductCard.propTypes = {
+export function ProductCardToListView({ product, quantity }) {
+  return (
+    <Link to={"/products/" + product.id} className="product-card">
+      <img src={product.image}></img>
+      <h3>{product.title}</h3>
+      <p>${product.price}</p>
+      <p>Quantity: {quantity}</p>
+      <button>Delete</button>
+    </Link>
+  );
+}
+
+ProductCardToGridView.propTypes = {
   product: PropTypes.object,
 };
 
-export default ProductCard;
+ProductCardToListView.propTypes = {
+  product: PropTypes.object,
+  quantity: PropTypes.number,
+};

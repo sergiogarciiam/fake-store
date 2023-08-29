@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useStore } from "../utils/useStore";
-import ProductCard from "./ProductCard";
+import { ProductCardToGridView } from "./ProductCard";
 import CategoriesList from "./CategoriesList";
 
 function Products() {
@@ -19,7 +19,12 @@ function Products() {
       <h1>Products {category}</h1>
       <CategoriesList></CategoriesList>
       {Object.keys(data).map((key) => {
-        return <ProductCard key={key} product={data[key]}></ProductCard>;
+        return (
+          <ProductCardToGridView
+            key={key}
+            product={data[key]}
+          ></ProductCardToGridView>
+        );
       })}
     </div>
   );
