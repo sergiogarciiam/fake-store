@@ -55,23 +55,19 @@ describe("Product Card components", () => {
         count: 200,
       },
       price: 20,
+      quantity: 3,
     };
-
-    const quantity = 3;
 
     render(
       <BrowserRouter>
-        <ProductCardToListView
-          product={product}
-          quantity={quantity}
-        ></ProductCardToListView>
+        <ProductCardToListView product={product}></ProductCardToListView>
       </BrowserRouter>
     );
 
     const card = screen.getByRole("link");
     const image = screen.getByRole("img");
     const title = screen.getByRole("heading", { name: product.title });
-    const quantityText = screen.getByText(`Quantity: ${quantity}`);
+    const quantityText = screen.getByText(`Quantity: ${product.quantity}`);
     const price = screen.getByText(`$${product.price}`);
     const button = screen.getByRole("button");
 

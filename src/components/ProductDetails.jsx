@@ -39,7 +39,7 @@ function ProductDetails() {
         </select>
       </form>
 
-      <button onClick={() => addProducts(id, parseInt(quantity))}>
+      <button onClick={() => addProducts(data, parseInt(quantity))}>
         Add to Cart
       </button>
 

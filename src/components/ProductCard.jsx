@@ -14,13 +14,13 @@ export function ProductCardToGridView({ product }) {
   );
 }
 
-export function ProductCardToListView({ product, quantity }) {
+export function ProductCardToListView({ product }) {
   return (
     <Link to={"/products/" + product.id} className="product-card">
       <img src={product.image}></img>
       <h3>{product.title}</h3>
       <p>${product.price}</p>
-      <p>Quantity: {quantity}</p>
+      <p>Quantity: {product.quantity}</p>
       <button>Delete</button>
     </Link>
   );

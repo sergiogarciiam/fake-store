@@ -6,6 +6,7 @@ import ProductDetails from "../components/ProductDetails";
 import * as userEvent from "@testing-library/user-event";
 
 const MOCK_DATA = {
+  id: 1,
   title: "Mock Product",
   image: "mock-image.jpg",
   rating: { rate: 4.5, count: 100 },
@@ -87,10 +88,10 @@ describe("Product Details component", () => {
 
     await user.click(button);
     products = JSON.parse(localStorage.getItem("products"));
-    expect(products[ID]).toBe(1);
+    expect(products[ID].quantity).toBe(1);
 
     await user.click(button);
     products = JSON.parse(localStorage.getItem("products"));
-    expect(products[ID]).toBe(2);
+    expect(products[ID].quantity).toBe(2);
   });
 });
