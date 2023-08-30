@@ -15,17 +15,18 @@ function Products() {
   if (loading) return null;
 
   return (
-    <div className="products-container">
-      <h1>Products {category}</h1>
+    <div className="products">
       <CategoriesList></CategoriesList>
-      {Object.keys(data).map((key) => {
-        return (
-          <ProductCardToGridView
-            key={key}
-            product={data[key]}
-          ></ProductCardToGridView>
-        );
-      })}
+      <div className="products-container">
+        {Object.keys(data).map((key) => {
+          return (
+            <ProductCardToGridView
+              key={key}
+              product={data[key]}
+            ></ProductCardToGridView>
+          );
+        })}
+      </div>
     </div>
   );
 }

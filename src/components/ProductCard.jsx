@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function ProductCardToGridView({ product }) {
   return (
-    <Link to={"/products/" + product.id} className="product-card">
+    <Link to={"/products/" + product.id} className="product-card-grid">
       <img src={product.image}></img>
       <h3>{product.title}</h3>
       <p>
@@ -14,15 +14,20 @@ export function ProductCardToGridView({ product }) {
   );
 }
 
-export function ProductCardToListView({ product }) {
+export function ProductCardToListView({ product, deleteProduct }) {
   return (
-    <Link to={"/products/" + product.id} className="product-card">
-      <img src={product.image}></img>
-      <h3>{product.title}</h3>
+    <div className="product-card-list">
+      <Link to={"/products/" + product.id}>
+        <img src={product.image}></img>
+      </Link>
+      <Link to={"/products/" + product.id}> {product.title}</Link>
+
       <p>${product.price}</p>
+
       <p>Quantity: {product.quantity}</p>
-      <button>Delete</button>
-    </Link>
+
+      <button onClick={() => deleteProduct(product)}>Delete</button>
+    </div>
   );
 }
 
@@ -32,5 +37,5 @@ ProductCardToGridView.propTypes = {
 
 ProductCardToListView.propTypes = {
   product: PropTypes.object,
-  quantity: PropTypes.number,
+  deleteProduct: PropTypes.func,
 };

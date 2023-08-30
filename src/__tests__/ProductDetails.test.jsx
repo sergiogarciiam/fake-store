@@ -44,7 +44,7 @@ describe("Product Details component", () => {
       </BrowserRouter>
     );
 
-    const title = await screen.findByRole("heading");
+    const title = await screen.findByRole("heading", { level: 2 });
     const image = await screen.findByRole("img");
     const button = await screen.findByRole("button");
     const separators = await screen.findAllByRole("separator");
@@ -70,7 +70,7 @@ describe("Product Details component", () => {
     expect(screen.getByText(`$${MOCK_DATA.price}`)).toBeInTheDocument();
     expect(screen.getByText("Quantity:")).toBeInTheDocument();
 
-    expect(screen.getByText("About the product")).toBeInTheDocument();
+    expect(screen.getByText("About this product")).toBeInTheDocument();
     expect(screen.getByText(MOCK_DATA.description)).toBeInTheDocument();
   });
 

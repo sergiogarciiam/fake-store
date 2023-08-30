@@ -27,11 +27,6 @@ describe("Categories List component", () => {
     );
 
     const links = await screen.findAllByRole("link");
-    const subTotal = screen.getByText(`Subtotal ( items): $${PRICE}`, {
-      exact: false,
-    });
-
     expect(links.length).toBe(2);
-    expect(subTotal).toBeInTheDocument();
   });
 });

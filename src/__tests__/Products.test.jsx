@@ -12,11 +12,7 @@ describe("Products component", () => {
       </BrowserRouter>
     );
 
-    const heading = await screen.findByRole("heading", { level: 1 });
     const links = await screen.findAllByRole("link");
-
-    expect(heading).toBeInTheDocument();
-    expect(heading.textContent).toMatch("Products");
     expect(links.length).toBe(20);
   });
 });

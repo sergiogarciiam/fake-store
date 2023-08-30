@@ -13,7 +13,7 @@ function getInitial(initialData) {
 }
 
 export function useLocalStorage() {
-  const initialData = JSON.parse(localStorage.getItem("products")) || {};
+  const initialData = JSON.parse(localStorage.getItem("cart")) || {};
   const { initialNumber, initialPrice } = getInitial(initialData);
 
   const [cart, setCart] = useState({
@@ -38,9 +38,20 @@ export function useLocalStorage() {
     });
   };
 
+  const deleteProduct = (product) => {
+    const newCart = {
+      ...cart,
+      number: cart.number - product.quantity,
+      price: cart.price - product.price * product.quantity,
+    };
+    delete cart.data[product.id];
+
+    setCart(newCart);
+  };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart.data));
   }, [cart]);
 
-  return { cart, addCart };
+  return { cart, addCart, deleteProduct };
 }

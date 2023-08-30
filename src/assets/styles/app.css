@@ -1,0 +1,149 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  list-style: none;
+  width: 100%;
+  background-color: gray;
+  padding: 20px;
+}
+
+.header a {
+  color: black;
+}
+
+.header li:first-child {
+  margin-right: auto;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  gap: 50px;
+  list-style: none;
+}
+
+.categories-container a {
+  color: black;
+  background-color: gray;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.categories-container li:first-child {
+  grid-column: 1/3;
+}
+
+.home > p {
+  margin-top: auto;
+}
+
+.products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.products .categories-container {
+  display: flex;
+}
+
+.products .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  padding: 20px;
+}
+
+.product-card-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 250px;
+  padding: 10px;
+
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+}
+
+.product-card-grid img {
+  width: 100px;
+  align-self: center;
+}
+
+.product-details {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  padding: 20px;
+}
+
+.product-details img {
+  width: 350px;
+}
+
+.product-details .product-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-right: 40%;
+}
+
+.rating {
+  display: flex;
+  gap: 20px;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.cart .products-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-card-list {
+  display: grid;
+  grid-area: "";
+
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+}
+
+.product-card-list img {
+  width: 100px;
+  align-self: center;
+}
+
+.cart .subtotal {
+  margin-left: auto;
+  font-size: 1.3rem;
+}

@@ -18,36 +18,43 @@ function ProductDetails() {
   return (
     <div className="product-details">
       <img src={data.image}></img>
-      <h1>{data.title}</h1>
+      <div className="product-details-info">
+        <h2>{data.title}</h2>
 
-      <section>
-        <p>{data.rating.rate}</p>
-        <p>({data.rating.count})</p>
-      </section>
+        <section className="rating">
+          <p>{data.rating.rate}</p>
+          <p>({data.rating.count})</p>
+        </section>
 
-      <hr></hr>
-      <p>${data.price}</p>
+        <hr></hr>
 
-      <form>
-        <label>Quantity: </label>
-        <select value={quantity} onChange={(e) => setQuantity(e.target.value)}>
-          {Array.from({ length: 15 }, (_, index) => (
-            <option key={index + 1} value={index + 1}>
-              {index + 1}
-            </option>
-          ))}
-        </select>
-      </form>
+        <p>${data.price}</p>
 
-      <button onClick={() => addCart(data, parseInt(quantity))}>
-        Add to Cart
-      </button>
+        <form>
+          <label>Quantity: </label>
+          <select
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          >
+            {Array.from({ length: 15 }, (_, index) => (
+              <option key={index + 1} value={index + 1}>
+                {index + 1}
+              </option>
+            ))}
+          </select>
+        </form>
 
-      <hr></hr>
-      <section>
-        <p>About the product</p>
-        <p>{data.description}</p>
-      </section>
+        <button onClick={() => addCart(data, parseInt(quantity))}>
+          Add to Cart
+        </button>
+
+        <hr></hr>
+
+        <section className="description">
+          <h3>About this product</h3>
+          <p>{data.description}</p>
+        </section>
+      </div>
     </div>
   );
 }

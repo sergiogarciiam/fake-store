@@ -33,10 +33,8 @@ describe("Header component", () => {
     expect(links[1].href).toMatch("/products");
     expect(links[1].className).toMatch("");
 
-    expect(links[2].textContent).toMatch(/Cart/i);
+    expect(links[2].textContent).toMatch(`Cart ${NUMBER_PRODUCTS}`);
     expect(links[2].href).toMatch("/cart");
     expect(links[2].className).toMatch("");
-
-    expect(screen.getByText(NUMBER_PRODUCTS)).toBeInTheDocument();
   });
 });
