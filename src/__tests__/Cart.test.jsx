@@ -27,6 +27,6 @@ describe("Categories List component", () => {
     );
 
     const links = await screen.findAllByRole("link");
-    expect(links.length).toBe(2);
+    expect(links.length).toBe(4);
   });
 });

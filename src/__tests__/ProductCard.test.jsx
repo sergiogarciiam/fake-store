@@ -64,20 +64,20 @@ describe("Product Card components", () => {
       </BrowserRouter>
     );
 
-    const card = screen.getByRole("link");
+    const links = screen.getAllByRole("link");
     const image = screen.getByRole("img");
-    const title = screen.getByRole("heading", { name: product.title });
     const quantityText = screen.getByText(`Quantity: ${product.quantity}`);
     const price = screen.getByText(`$${product.price}`);
     const button = screen.getByRole("button");
 
-    expect(card).toBeInTheDocument();
-    expect(card.href).toMatch(`products/${product.id}`);
+    expect(links.length).toBe(2);
+    expect(links[0].href).toMatch(`products/${product.id}`);
+    expect(links[1].href).toMatch(`products/${product.id}`);
+    expect(links[1].textContent).toMatch(product.title);
 
     expect(image).toBeInTheDocument();
     expect(image.src).toMatch(product.image);
 
-    expect(title).toBeInTheDocument();
     expect(quantityText).toBeInTheDocument();
     expect(price).toBeInTheDocument();
 
