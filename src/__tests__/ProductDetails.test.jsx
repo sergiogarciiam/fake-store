@@ -44,34 +44,42 @@ describe("Product Details component", () => {
       </BrowserRouter>
     );
 
-    const title = await screen.findByRole("heading", { level: 2 });
     const image = await screen.findByRole("img");
-    const button = await screen.findByRole("button");
     const separators = await screen.findAllByRole("separator");
+
+    const title = await screen.findByRole("heading", { level: 2 });
+    const rate = screen.getByText(
+      MOCK_DATA.rating.rate + " " + "★".repeat(MOCK_DATA.rating.rate)
+    );
+    const count = screen.getByText(`${MOCK_DATA.rating.count} ratings`);
+
+    const price = screen.getByText(`$${MOCK_DATA.price}`);
+    const quantity = screen.getByText("Quantity:");
     const combobox = await screen.findByRole("combobox");
     const options = await screen.findAllByRole("option");
+    const button = await screen.findByRole("button");
 
-    expect(title).toBeInTheDocument();
-    expect(title.textContent).toMatch(MOCK_DATA.title);
+    const aboutProduct = screen.getByText("About this product");
+    const description = screen.getByText(MOCK_DATA.description);
 
     expect(image).toBeInTheDocument();
     expect(image.src).toMatch(MOCK_DATA.image);
+    expect(separators.length).toBe(2);
 
+    expect(title).toBeInTheDocument();
+    expect(title.textContent).toMatch(MOCK_DATA.title);
+    expect(rate).toBeInTheDocument();
+    expect(count).toBeInTheDocument();
+
+    expect(price).toBeInTheDocument();
+    expect(quantity).toBeInTheDocument();
+    expect(combobox).toBeInTheDocument();
+    expect(options.length).toBe(15);
     expect(button).toBeInTheDocument();
     expect(button.textContent).toMatch(/Add To Cart/i);
 
-    expect(separators.length).toBe(2);
-    expect(combobox).toBeInTheDocument();
-    expect(options.length).toBe(15);
-
-    expect(screen.getByText(MOCK_DATA.rating.rate)).toBeInTheDocument();
-    expect(screen.getByText(`(${MOCK_DATA.rating.count})`)).toBeInTheDocument();
-
-    expect(screen.getByText(`$${MOCK_DATA.price}`)).toBeInTheDocument();
-    expect(screen.getByText("Quantity:")).toBeInTheDocument();
-
-    expect(screen.getByText("About this product")).toBeInTheDocument();
-    expect(screen.getByText(MOCK_DATA.description)).toBeInTheDocument();
+    expect(aboutProduct).toBeInTheDocument();
+    expect(description).toBeInTheDocument();
   });
 
   it("add to cart", async () => {

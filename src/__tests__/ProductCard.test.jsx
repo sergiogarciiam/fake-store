@@ -29,9 +29,8 @@ describe("Product Card components", () => {
     const card = screen.getByRole("link");
     const image = screen.getByRole("img");
     const title = screen.getByRole("heading", { name: product.title });
-    const rating = screen.getByText(
-      product.rating.rate + " (" + product.rating.count + ")"
-    );
+    const rate = screen.getByText(product.rating.rate + " ★");
+    const count = screen.getByText("(" + product.rating.count + ")");
     const price = screen.getByText(`$${product.price}`);
 
     expect(card).toBeInTheDocument();
@@ -41,7 +40,8 @@ describe("Product Card components", () => {
     expect(image.src).toMatch(product.image);
 
     expect(title).toBeInTheDocument();
-    expect(rating).toBeInTheDocument();
+    expect(rate).toBeInTheDocument();
+    expect(count).toBeInTheDocument();
     expect(price).toBeInTheDocument();
   });
 

@@ -22,8 +22,10 @@ function ProductDetails() {
         <h2>{data.title}</h2>
 
         <section className="rating">
-          <p>{data.rating.rate}</p>
-          <p>({data.rating.count})</p>
+          <p>
+            {data.rating.rate} {"★".repeat(data.rating.rate)}
+          </p>
+          <p>{data.rating.count} ratings</p>
         </section>
 
         <hr></hr>

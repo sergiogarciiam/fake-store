@@ -24,7 +24,7 @@ function Header() {
       </li>
       <li>
         <Link to={"cart"} className={activeLink === "/cart" ? "active" : ""}>
-          Cart {cart.number}
+          Cart ({cart.number})
         </Link>
       </li>
     </ul>

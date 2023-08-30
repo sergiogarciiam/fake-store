@@ -7,7 +7,7 @@ export function useStore(url) {
 
   useEffect(() => {
     setLoading(true);
-    fetch(url)
+    fetch(url, { mode: "cors" })
       .then((response) => response.json())
       .then((json) => {
         setData(json);
