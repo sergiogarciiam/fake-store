@@ -1,6 +1,7 @@
 import { cleanup, render, screen } from "@testing-library/react";
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
+import * as userEvent from "@testing-library/user-event";
 
 import ProductDetails from "../components/ProductDetails";
 
@@ -13,12 +14,14 @@ const MOCK_DATA = {
   description: "A mock product description",
 };
 
+const ADD_PRODUCT = vi.fn();
+
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
   return {
     ...actual,
     useParams: () => ({ id: MOCK_DATA.id }),
-    useOutletContext: () => [{}, vi.fn()],
+    useOutletContext: () => [{}, ADD_PRODUCT],
   };
 });
 
@@ -78,5 +81,21 @@ describe("Product Details component", () => {
 
     expect(aboutProduct).toBeInTheDocument();
     expect(description).toBeInTheDocument();
+  });
+
+  it("delete function is called correct", async () => {
+    const user = userEvent.setup();
+
+    render(
+      <BrowserRouter>
+        <ProductDetails></ProductDetails>
+      </BrowserRouter>
+    );
+
+    const button = await screen.findByRole("button");
+
+    await user.click(button);
+
+    expect(ADD_PRODUCT).toBeCalled();
   });
 });
