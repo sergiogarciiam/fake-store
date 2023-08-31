@@ -242,7 +242,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px;
+  padding: 50px;
 }
 
 .cart .products-container {
@@ -253,19 +253,69 @@
 
 .product-card-list {
   display: grid;
-  grid-area: "";
+  grid-template-columns: 0.1fr 1fr 0.1fr;
+  grid-template-areas: "image title button" "image quantity button" "image price button";
 
   border: 1px solid var(--letter-color);
   color: var(--letter-color);
   text-decoration: none;
+
+  padding: 20px;
+}
+
+.product-card-list .image {
+  grid-area: image;
 }
 
 .product-card-list img {
+  justify-self: flex-start;
   width: 100px;
   align-self: center;
 }
 
-.cart .subtotal {
+.product-card-list .title {
+  grid-area: title;
+
+  color: var(--letter-color);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-card-list .quantity {
+  grid-area: quantity;
+  font-size: 1.2rem;
+}
+
+.product-card-list .price {
+  grid-area: price;
+  align-self: flex-end;
+  font-size: 1.5rem;
+}
+
+.product-card-list button {
+  grid-area: button;
+  align-self: flex-end;
+  justify-self: flex-end;
+
+  color: var(--buttons-color);
+  background-color: #fff;
+  border: none;
+  font-size: 1.2rem;
+
+  cursor: pointer;
+}
+
+.product-card-list button:hover {
+  text-decoration: underline;
+}
+
+.cart .subtotal,
+.cart .empty-cart {
   margin-left: auto;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+}
+
+.cart .empty-cart {
+  margin-right: auto;
 }

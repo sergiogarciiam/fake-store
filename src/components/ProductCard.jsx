@@ -18,14 +18,17 @@ export function ProductCardToGridView({ product }) {
 export function ProductCardToListView({ product, deleteProduct }) {
   return (
     <div className="product-card-list">
-      <Link to={"/products/" + product.id}>
+      <Link to={"/products/" + product.id} className="image">
         <img src={product.image}></img>
       </Link>
-      <Link to={"/products/" + product.id}> {product.title}</Link>
+      <Link to={"/products/" + product.id} className="title">
+        {" "}
+        {product.title}
+      </Link>
 
-      <p>${product.price}</p>
+      <p className="price">${product.price}</p>
 
-      <p>Quantity: {product.quantity}</p>
+      <p className="quantity">Quantity: {product.quantity}</p>
 
       <button onClick={() => deleteProduct(product)}>Delete</button>
     </div>
