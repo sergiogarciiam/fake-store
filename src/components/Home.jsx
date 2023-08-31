@@ -3,7 +3,7 @@ import CategoriesList from "./CategoriesList";
 function Home() {
   return (
     <div className="home">
-      <h1>What are you looking for?</h1>
+      <h1>What Are You Looking For?</h1>
       <CategoriesList></CategoriesList>
       <p>
         By{" "}

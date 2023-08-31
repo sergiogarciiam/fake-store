@@ -10,20 +10,30 @@ function Header() {
   return (
     <ul className="header">
       <li>
-        <Link to={"/"} className={activeLink === "/" ? "active" : ""}>
+        <Link
+          to={"/"}
+          className={activeLink === "/" ? "title-link active" : "title-link"}
+        >
           Fake Store
         </Link>
       </li>
       <li>
         <Link
           to={"products"}
-          className={activeLink.includes("/products") ? "active" : ""}
+          className={
+            activeLink.includes("/products")
+              ? "products-link active"
+              : "products-link"
+          }
         >
           Products
         </Link>
       </li>
       <li>
-        <Link to={"cart"} className={activeLink === "/cart" ? "active" : ""}>
+        <Link
+          to={"cart"}
+          className={activeLink === "/cart" ? "cart-link active" : "cart-link"}
+        >
           Cart ({cart.number})
         </Link>
       </li>

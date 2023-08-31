@@ -6,7 +6,7 @@ function CategoriesList() {
     "https://fakestoreapi.com/products/categories/"
   );
 
-  if (error) return <p>{error}</p>;
+  if (error) return <p className="error">{error}</p>;
   if (loading) return null;
 
   return (

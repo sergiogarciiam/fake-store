@@ -4,18 +4,23 @@ import { ProductCardToListView } from "./ProductCard";
 function Cart() {
   const { cart, deleteProduct } = useLocalStorage();
 
+  const data = Object.keys(cart.data);
   return (
     <div className="cart">
       <div className="products-container">
-        {Object.keys(cart.data).map((key) => {
-          return (
-            <ProductCardToListView
-              key={key}
-              product={cart.data[key]}
-              deleteProduct={deleteProduct}
-            ></ProductCardToListView>
-          );
-        })}
+        {data.length !== 0 ? (
+          data.map((key) => {
+            return (
+              <ProductCardToListView
+                key={key}
+                product={cart.data[key]}
+                deleteProduct={deleteProduct}
+              ></ProductCardToListView>
+            );
+          })
+        ) : (
+          <h2>Cart is empty!</h2>
+        )}
       </div>
 
       <p className="subtotal">

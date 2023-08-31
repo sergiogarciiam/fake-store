@@ -12,13 +12,13 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const { addCart } = useLocalStorage();
 
-  if (error) return <p>{error}</p>;
+  if (error) return <p className="error">{error}</p>;
   if (loading) return null;
 
   return (
     <div className="product-details">
       <img src={data.image}></img>
-      <div className="product-details-info">
+      <div className="information">
         <h2>{data.title}</h2>
 
         <section className="rating">
@@ -30,7 +30,7 @@ function ProductDetails() {
 
         <hr></hr>
 
-        <p>${data.price}</p>
+        <p className="price">${data.price}</p>
 
         <form>
           <label>Quantity: </label>

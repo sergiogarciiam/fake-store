@@ -6,9 +6,11 @@ export function ProductCardToGridView({ product }) {
     <Link to={"/products/" + product.id} className="product-card-grid">
       <img src={product.image}></img>
       <h3>{product.title}</h3>
-      <p>{product.rating.rate} ★</p>
-      <p>({product.rating.count})</p>
-      <p>${product.price}</p>
+      <section className="rating">
+        <p>{product.rating.rate} ★</p>
+        <p>({product.rating.count})</p>
+      </section>
+      <p className="price">${product.price}</p>
     </Link>
   );
 }

@@ -11,7 +11,7 @@ function Products() {
     `https://fakestoreapi.com/products/${category}`
   );
 
-  if (error) return <p>{error}</p>;
+  if (error) return <p className="error">{error}</p>;
   if (loading) return null;
 
   return (

@@ -1,2 +1,2 @@
 # fake-store
-A fake store created with React
+A fake store created with React to practice testing

@@ -16,7 +16,7 @@ describe("Home component", () => {
     const authorLink = screen.getByRole("link", { name: "Sergio García" });
 
     expect(heading).toBeInTheDocument();
-    expect(heading.textContent).toMatch("What are you looking for?");
+    expect(heading.textContent).toMatch("What Are You Looking For?");
 
     expect(authorLink).toBeInTheDocument();
     expect(authorLink.href).toMatch("https://github.com/sergiogarciiam");
