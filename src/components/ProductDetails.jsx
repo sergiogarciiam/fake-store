@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import { useStore } from "../utils/useStore";
 import { useState } from "react";
-import { useLocalStorage } from "../utils/useLocalStorage";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -10,10 +9,10 @@ function ProductDetails() {
   );
 
   const [quantity, setQuantity] = useState(1);
-  const { addCart } = useLocalStorage();
+  const [, addProduct] = useOutletContext();
 
-  const handleAddCart = (e) => {
-    addCart(data, parseInt(quantity));
+  const handleAddProduct = (e) => {
+    addProduct(data, parseInt(quantity));
     e.target.className = "active";
     setTimeout(() => {
       e.target.className = "";
@@ -54,7 +53,7 @@ function ProductDetails() {
           </select>
         </form>
 
-        <button onClick={handleAddCart}>Add to Cart</button>
+        <button onClick={handleAddProduct}>Add to Cart</button>
 
         <hr></hr>
 

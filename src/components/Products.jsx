@@ -4,11 +4,11 @@ import { ProductCardToGridView } from "./ProductCard";
 import CategoriesList from "./CategoriesList";
 
 function Products() {
-  let { category } = useParams();
-  category = category ? `category/${category}` : "";
+  const { category } = useParams();
+  const link = category ? `category/${category}` : "";
 
   const { data, error, loading } = useStore(
-    `https://fakestoreapi.com/products/${category}`
+    `https://fakestoreapi.com/products/${link}`
   );
 
   if (error) return <p className="error">{error}</p>;
@@ -16,7 +16,7 @@ function Products() {
 
   return (
     <div className="products">
-      <CategoriesList></CategoriesList>
+      <CategoriesList activeCategory={link}></CategoriesList>
       <div className="products-container">
         {Object.keys(data).map((key) => {
           return (

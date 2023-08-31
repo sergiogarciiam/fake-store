@@ -71,13 +71,30 @@
 }
 
 .cart .subtotal,
-.cart .empty-cart {
+.cart .empty-cart,
+.cart .pay-button {
   margin-left: auto;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .cart .empty-cart {
   margin-right: auto;
+}
+
+.cart .pay-button {
+  padding: 10px 30px;
+  border-radius: 25px;
+  border: none;
+
+  background-color: var(--buttons-color);
+  color: var(--letter-color-sec);
+
+  cursor: pointer;
+  transition: transform 200ms;
+}
+
+.cart .pay-button:hover {
+  transform: scale(1.05);
 }
 
 @media screen and (max-width: 600px) {

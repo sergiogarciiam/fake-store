@@ -17,13 +17,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  gap: 70px;
+  gap: 80px;
   list-style: none;
 }
 
 .categories-container a {
   color: var(--letter-color-sec);
   background-color: var(--buttons-color);
+  border: 1px solid var(--buttons-color);
 
   text-decoration: none;
   text-align: center;
@@ -31,6 +32,10 @@
   padding: 10px 20px;
   border-radius: 30px;
   transition: opacity 200ms;
+}
+.categories-container a.active {
+  background-color: var(--background-color);
+  color: var(--buttons-color);
 }
 
 .categories-container li:first-child {

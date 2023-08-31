@@ -29,6 +29,8 @@
   font-size: 1.1rem;
 }
 
+.products-link.active,
+.cart-link.active,
 .products-link:hover,
 .cart-link:hover {
   border: 2px solid var(--letter-color-sec);
@@ -36,7 +38,7 @@
 
 @media screen and (max-width: 600px) {
   .header li:first-child {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
   .products-link,
   .cart-link {

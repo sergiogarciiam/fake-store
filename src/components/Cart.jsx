@@ -1,8 +1,8 @@
-import { useLocalStorage } from "../utils/useLocalStorage";
+import { useOutletContext } from "react-router-dom";
 import { ProductCardToListView } from "./ProductCard";
 
 function Cart() {
-  const { cart, deleteProduct } = useLocalStorage();
+  const [cart, , deleteProduct] = useOutletContext();
 
   const data = Object.keys(cart.data);
   return (
@@ -23,6 +23,9 @@ function Cart() {
           <p className="subtotal">
             Subtotal ({cart.number} items): <strong>${cart.price}</strong>
           </p>
+          <button className="pay-button" onClick={() => deleteProduct()}>
+            Pay
+          </button>
         </>
       ) : (
         <h2 className="empty-cart">Cart is empty!</h2>

@@ -1,11 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useOutletContext } from "react-router-dom";
 import { useActiveLink } from "../utils/useActiveLink";
-import { useLocalStorage } from "../utils/useLocalStorage";
 
-function Header() {
+function Header({ cart }) {
   const location = useLocation();
   const activeLink = useActiveLink(location);
-  const { cart } = useLocalStorage();
 
   return (
     <ul className="header">
