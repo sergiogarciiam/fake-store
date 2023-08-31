@@ -4,22 +4,23 @@ import { BrowserRouter } from "react-router-dom";
 
 import Cart from "../components/Cart";
 
-const PRICE = 100;
+const CART = {
+  data: {
+    1: {},
+    2: {},
+  },
+};
 
-vi.mock("../utils/useLocalStorage", () => ({
-  useLocalStorage: vi.fn(() => ({
-    cart: {
-      data: {
-        1: 2,
-        2: 3,
-      },
-      price: PRICE,
-    },
-  })),
-}));
+vi.mock("react-router-dom", async () => {
+  const actual = await vi.importActual("react-router-dom");
+  return {
+    ...actual,
+    useOutletContext: () => [CART, vi.fn(), vi.fn()],
+  };
+});
 
-describe("Categories List component", () => {
-  it("render correct categories list", async () => {
+describe("Cart component", () => {
+  it("render correct cart", async () => {
     render(
       <BrowserRouter>
         <Cart></Cart>
@@ -27,6 +28,7 @@ describe("Categories List component", () => {
     );
 
     const links = await screen.findAllByRole("link");
+    console.log(links);
     expect(links.length).toBe(4);
   });
 });

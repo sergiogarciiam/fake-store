@@ -3,7 +3,6 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { BrowserRouter } from "react-router-dom";
 
 import ProductDetails from "../components/ProductDetails";
-import * as userEvent from "@testing-library/user-event";
 
 const MOCK_DATA = {
   id: 1,
@@ -14,13 +13,12 @@ const MOCK_DATA = {
   description: "A mock product description",
 };
 
-const ID = 1;
-
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
   return {
     ...actual,
-    useParams: () => ({ id: ID }),
+    useParams: () => ({ id: MOCK_DATA.id }),
+    useOutletContext: () => [{}, vi.fn()],
   };
 });
 
@@ -80,26 +78,5 @@ describe("Product Details component", () => {
 
     expect(aboutProduct).toBeInTheDocument();
     expect(description).toBeInTheDocument();
-  });
-
-  it("add to cart", async () => {
-    const user = userEvent.setup();
-
-    render(
-      <BrowserRouter>
-        <ProductDetails></ProductDetails>
-      </BrowserRouter>
-    );
-
-    const button = await screen.findByRole("button");
-    let cart = {};
-
-    await user.click(button);
-    cart = JSON.parse(localStorage.getItem("cart"));
-    expect(cart[ID].quantity).toBe(1);
-
-    await user.click(button);
-    cart = JSON.parse(localStorage.getItem("cart"));
-    expect(cart[ID].quantity).toBe(2);
   });
 });

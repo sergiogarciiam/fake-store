@@ -1,4 +1,6 @@
-import { Link, useLocation, useOutletContext } from "react-router-dom";
+import PropTypes from "prop-types";
+
+import { Link, useLocation } from "react-router-dom";
 import { useActiveLink } from "../utils/useActiveLink";
 
 function Header({ cart }) {
@@ -38,5 +40,9 @@ function Header({ cart }) {
     </ul>
   );
 }
+
+Header.propTypes = {
+  cart: PropTypes.object,
+};
 
 export default Header;
