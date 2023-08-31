@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+
+  width: 100%;
+  list-style: none;
+  background-color: var(--header-color);
+  padding: 20px 50px;
+}
+
+.header a {
+  color: var(--letter-color-sec);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header li:first-child {
+  font-size: 2rem;
+  margin-right: auto;
+  font-weight: bolder;
+}
+
+.products-link,
+.cart-link {
+  padding: 20px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  font-size: 1.1rem;
+}
+
+.products-link:hover,
+.cart-link:hover {
+  border: 2px solid var(--letter-color-sec);
+}

@@ -12,6 +12,14 @@ function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const { addCart } = useLocalStorage();
 
+  const handleAddCart = (e) => {
+    addCart(data, parseInt(quantity));
+    e.target.className = "active";
+    setTimeout(() => {
+      e.target.className = "";
+    }, 400);
+  };
+
   if (error) return <p className="error">{error}</p>;
   if (loading) return null;
 
@@ -46,9 +54,7 @@ function ProductDetails() {
           </select>
         </form>
 
-        <button onClick={() => addCart(data, parseInt(quantity))}>
-          Add to Cart
-        </button>
+        <button onClick={handleAddCart}>Add to Cart</button>
 
         <hr></hr>
 
