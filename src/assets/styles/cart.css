@@ -79,3 +79,11 @@
 .cart .empty-cart {
   margin-right: auto;
 }
+
+@media screen and (max-width: 600px) {
+  .product-card-list {
+    grid-template-columns: 1fr;
+    grid-template-areas: "image" "title" "quantity" "price" "button";
+    gap: 20px;
+  }
+}

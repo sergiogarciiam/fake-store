@@ -83,3 +83,13 @@
     opacity: 0;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .product-details {
+    grid-template-columns: 1fr;
+  }
+
+  .product-details .information {
+    margin: 0;
+  }
+}

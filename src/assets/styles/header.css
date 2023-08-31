@@ -33,3 +33,13 @@
 .cart-link:hover {
   border: 2px solid var(--letter-color-sec);
 }
+
+@media screen and (max-width: 600px) {
+  .header li:first-child {
+    font-size: 1.3rem;
+  }
+  .products-link,
+  .cart-link {
+    padding: 0;
+  }
+}
