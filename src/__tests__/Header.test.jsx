@@ -19,7 +19,6 @@ describe("Header component", () => {
 
     expect(links[0].textContent).toMatch(/Fake Store/i);
     expect(links[0].href).toMatch("/");
-    expect(links[0].className).toMatch("active");
 
     expect(links[1].textContent).toMatch(/Products/i);
     expect(links[1].href).toMatch("/products");

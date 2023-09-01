@@ -1,4 +1,4 @@
-import { useOutletContext, useParams } from "react-router-dom";
+import { useOutletContext, useParams, Link } from "react-router-dom";
 import { useStore } from "../utils/useStore";
 import { useState } from "react";
 
@@ -62,6 +62,9 @@ function ProductDetails() {
           <p>{data.description}</p>
         </section>
       </div>
+      <Link to="/products" className="back-to-store">
+        Back to Store
+      </Link>
     </div>
   );
 }

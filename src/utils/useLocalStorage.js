@@ -45,7 +45,7 @@ export function useLocalStorage() {
       const newCart = {
         ...cart,
         number: cart.number - product.quantity,
-        price: cart.price - product.price * product.quantity,
+        price: Math.floor(cart.price - product.price * product.quantity),
       };
       delete newCart.data[product.id];
       setCart(newCart);

@@ -29,8 +29,6 @@
   font-size: 1.1rem;
 }
 
-.products-link.active,
-.cart-link.active,
 .products-link:hover,
 .cart-link:hover {
   border: 2px solid var(--letter-color-sec);
