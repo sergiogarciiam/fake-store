@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 export function ProductCardToGridView({ product }) {
   return (
-    <Link to={"/products/" + product.id} className="product-card-grid">
+    <Link
+      to={"/fake-store/products/" + product.id}
+      className="product-card-grid"
+    >
       <img src={product.image}></img>
       <h3>{product.title}</h3>
       <section className="rating">
@@ -18,10 +21,10 @@ export function ProductCardToGridView({ product }) {
 export function ProductCardToListView({ product, deleteProduct }) {
   return (
     <div className="product-card-list">
-      <Link to={"/products/" + product.id} className="image">
+      <Link to={"/fake-store/products/" + product.id} className="image">
         <img src={product.image}></img>
       </Link>
-      <Link to={"/products/" + product.id} className="title">
+      <Link to={"/fake-store/products/" + product.id} className="title">
         {" "}
         {product.title}
       </Link>

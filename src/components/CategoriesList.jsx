@@ -16,7 +16,10 @@ function CategoriesList({ activeCategory = "none" }) {
   return (
     <ul className="categories-container">
       <li>
-        <Link to="/products" className={activeCategory === "" ? "active" : ""}>
+        <Link
+          to="/fake-store/products"
+          className={activeCategory === "" ? "active" : ""}
+        >
           all
         </Link>
       </li>
@@ -25,7 +28,7 @@ function CategoriesList({ activeCategory = "none" }) {
         return (
           <li key={category}>
             <Link
-              to={"/products/category/" + category}
+              to={"/fake-store/products/category/" + category}
               className={category === activeCategory ? "active" : ""}
             >
               {category}

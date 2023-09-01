@@ -9,27 +9,27 @@ import Cart from "../components/Cart";
 function Router() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/fake-store",
       element: <App></App>,
       children: [
         {
-          path: "/",
+          path: "/fake-store",
           element: <Home></Home>,
         },
         {
-          path: "/products",
+          path: "/fake-store/products",
           element: <Products></Products>,
         },
         {
-          path: "/products/category/:category",
+          path: "/fake-store/products/category/:category",
           element: <Products></Products>,
         },
         {
-          path: "/products/:id",
+          path: "/fake-store/products/:id",
           element: <ProductDetails></ProductDetails>,
         },
         {
-          path: "/cart",
+          path: "/fake-store/cart",
           element: <Cart></Cart>,
         },
       ],

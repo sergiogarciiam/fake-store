@@ -6,17 +6,17 @@ function Header({ cart }) {
   return (
     <ul className="header">
       <li>
-        <Link to={"/"} className={"title-link"}>
+        <Link to={"/fake-store"} className={"title-link"}>
           Fake Store
         </Link>
       </li>
       <li>
-        <Link to={"products"} className={"products-link"}>
+        <Link to={"/fake-store/products"} className={"products-link"}>
           Products
         </Link>
       </li>
       <li>
-        <Link to={"cart"} className={"cart-link"}>
+        <Link to={"/fake-store/cart"} className={"cart-link"}>
           Cart ({cart.number})
         </Link>
       </li>

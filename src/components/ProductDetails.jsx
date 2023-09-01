@@ -62,7 +62,7 @@ function ProductDetails() {
           <p>{data.description}</p>
         </section>
       </div>
-      <Link to="/products" className="back-to-store">
+      <Link to="/fake-store/products" className="back-to-store">
         Back to Store
       </Link>
     </div>
