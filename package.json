@@ -1,5 +1,6 @@
 {
   "name": "my-first-react-app",
+  "homepage": "https://sergiogarciiam.github.io/fake-store",
   "private": true,
   "version": "0.0.0",
   "type": "module",
